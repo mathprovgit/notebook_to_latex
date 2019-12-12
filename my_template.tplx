@@ -1,0 +1,140 @@
+
+((*- extends 'article.tplx' -*))
+
+% don't display inputs
+((* block input_group *))
+    ((*- if cell.metadata.get('nbconvert', {}).get('show_code', False) -*))
+        ((( super() )))
+    ((*- endif -*))
+((* endblock input_group *))
+
+% main definitions
+((* block docclass *))
+\documentclass[reprint, floatfix, groupaddress, prb]{article}
+
+\usepackage{placeins}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage[table]{xcolor} 
+
+\AtBeginDocument{
+\heavyrulewidth=.08em
+\lightrulewidth=.05em
+\cmidrulewidth=.03em
+\belowbottomsep=0pt
+\aboverulesep=.4ex
+\abovetopsep=0pt
+\cmidrulesep=\doublerulesep
+\cmidrulekern=.5em
+\defaultaddspace=.5em
+}
+
+((* endblock docclass *))
+
+% Author and Title 
+((* block maketitle *))
+
+\title{\huge{\textbf{My Latex automated Report}}\\[2ex]  \LARGE{Generated from my notebook.ipynb}}
+\author{Mathieu Provost}
+\date{\today}
+   
+\makeatletter         
+\def\@maketitle{
+\raggedright
+
+\begin{center}
+\includegraphics{pics/jupyter_logo.png}\\[4ex]
+{\@title }\\[6ex] 
+{\Large  \@author}\\[4ex] 
+\@date\\[8ex]
+\includegraphics{pics/jupyter_picture.jpg}
+\end{center}}
+    
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+((* endblock maketitle *))
+
+
+% New mechanism for rendering figures with captions
+((*- block data_png -*))
+((*- if cell.metadata.widefigure: -*))
+    ((( draw_widefigure_with_caption(output.metadata.filenames['image/png'], cell.metadata.caption, cell.metadata.label) )))
+((*- else -*))
+    ((*- if cell.metadata.caption: -*))
+        ((*- if cell.metadata.label: -*))
+            ((( draw_figure_with_caption(output.metadata.filenames['image/png'], cell.metadata.caption, cell.metadata.label) )))
+        ((*- else -*))
+            ((( draw_figure_with_caption(output.metadata.filenames['image/png'], cell.metadata.caption, "") )))
+        ((*- endif *))
+    ((*- else -*))
+        ((( draw_figure_with_caption(output.metadata.filenames['image/png'], "") )))
+    ((*- endif *))
+((*- endif *))
+((*- endblock -*))
+((*- block data_jpg -*))
+((*- if cell.metadata.caption: -*))
+    ((*- if cell.metadata.label: -*))
+        ((( draw_figure_with_caption(output.metadata.filenames['image/jpeg'], cell.metadata.caption, cell.metadata.label) )))
+    ((*- else -*))
+        ((( draw_figure_with_caption(output.metadata.filenames['image/jpeg'], cell.metadata.caption, "") )))
+    ((*- endif *))
+((*- else -*))
+    ((( draw_figure_with_caption(output.metadata.filenames['image/jpeg'], "") )))
+((*- endif *))
+((*- endblock -*))
+((*- block data_svg -*))
+((*- if cell.metadata.caption: -*))
+    ((*- if cell.metadata.label: -*))
+        ((( draw_figure_with_caption(output.metadata.filenames['image/svg+xml'], cell.metadata.caption, cell.metadata.label) )))
+    ((*- else -*))
+        ((( draw_figure_with_caption(output.metadata.filenames['image/svg+xml'], cell.metadata.caption, "") )))
+    ((*- endif *))
+((*- else -*))
+    ((( draw_figure_with_caption(output.metadata.filenames['image/svg+xml'], "") )))
+((*- endif *))
+((*- endblock -*))
+((*- block data_pdf -*))
+((*- if cell.metadata.widefigure: -*))
+    ((( draw_widefigure_with_caption(output.metadata.filenames['application/pdf'], cell.metadata.caption, cell.metadata.label) )))
+((*- else -*))
+    ((*- if cell.metadata.caption: -*))
+        ((*- if cell.metadata.label: -*))
+            ((( draw_figure_with_caption(output.metadata.filenames['application/pdf'], cell.metadata.caption, cell.metadata.label) )))
+        ((*- else -*))
+            ((( draw_figure_with_caption(output.metadata.filenames['application/pdf'], cell.metadata.caption, "") )))
+        ((*- endif *))
+    ((*- else -*))
+        ((( draw_figure_with_caption(output.metadata.filenames['application/pdf'], "") )))
+    ((*- endif *))
+((*- endif *))
+((*- endblock -*))
+
+% Draw a figure using the graphicx package.
+((* macro draw_figure_with_caption(filename, caption, label) -*))
+((* set filename = filename | posix_path *))
+((*- block figure scoped -*))
+    \begin{figure}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{((( filename )))}\end{center}
+        \caption{((( caption )))}
+        \label{((( label )))}
+    \end{figure}
+((*- endblock figure -*))
+((*- endmacro *))
+
+% Draw a figure using the graphicx package.
+((* macro draw_widefigure_with_caption(filename, caption, label) -*))
+((* set filename = filename | posix_path *))
+((*- block figure_wide scoped -*))
+    \begin{figure*}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{((( filename )))}\end{center}
+        \caption{((( caption )))}
+        \label{((( label )))}
+    \end{figure*}
+((*- endblock figure_wide -*))
+((*- endmacro *))
