@@ -44,7 +44,7 @@
 \raggedright
 
 \begin{center}
-\includegraphics{pics/jupyter_logo.png}\\[4ex]
+\includegraphics[width=30mm]{pics/jupyter_logo.png}\\[4ex]
 {\@title }\\[6ex] 
 {\Large  \@author}\\[4ex] 
 \@date\\[8ex]
