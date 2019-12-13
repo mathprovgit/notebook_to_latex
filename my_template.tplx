@@ -10,6 +10,7 @@
 
 % main definitions
 ((* block docclass *))
+%\documentclass[11pt]{article}
 \documentclass[reprint, floatfix, groupaddress, prb]{article}
 
 \usepackage{placeins}
@@ -30,10 +31,13 @@
 \defaultaddspace=.5em
 }
 
+% new page before each chapter
+\usepackage{sectsty}
+\sectionfont{\clearpage}
+
 ((* endblock docclass *))
 
-% Author and Title 
-((* block maketitle *))
+((* block title *))
 
 \title{\huge{\textbf{My Latex automated Report}}\\[2ex]  \LARGE{Generated from my notebook.ipynb}}
 \author{Mathieu Provost}
@@ -50,6 +54,10 @@
 \@date\\[8ex]
 \includegraphics{pics/jupyter_picture.jpg}
 \end{center}}
+
+((* endblock title *))
+
+((* block maketitle *))
     
 \maketitle
 
