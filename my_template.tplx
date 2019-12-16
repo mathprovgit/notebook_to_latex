@@ -1,36 +1,33 @@
 
+
 ((*- extends 'article.tplx' -*))
 
-% don't display inputs
+%-------- remove inputs ---------
 ((* block input_group *))
     ((*- if cell.metadata.get('nbconvert', {}).get('show_code', False) -*))
         ((( super() )))
     ((*- endif -*))
 ((* endblock input_group *))
 
-% main definitions
+%-------- output without prompt ---------
+((* block execute_result scoped *))
+    ((* block display_data scoped *))
+        ((( super() )))
+    ((* endblock display_data *))
+((* endblock execute_result *))
+
+
+%-------- docclass section ---------
 ((* block docclass *))
-%\documentclass[11pt]{article}
+
 \documentclass[reprint, floatfix, groupaddress, prb]{article}
 
+%set main font
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
 %depth of toc
-\setcounter{tocdepth}{4}
-
-% newline after paragraph
-\makeatletter
-\renewcommand\paragraph{%
-    \@startsection{paragraph}{4}{0mm}%
-       {-\baselineskip}%
-       {.5\baselineskip}%
-       {\normalfont\normalsize\bfseries}}
-\makeatother    
-
-%import packages
-\usepackage{placeins}
-\usepackage{graphicx}
-\usepackage{multirow}
-\usepackage{array}
-\usepackage[table]{xcolor} 
+\setcounter{tocdepth}{3}
 
 \AtBeginDocument{
 \heavyrulewidth=.08em
@@ -44,11 +41,19 @@
 \defaultaddspace=.5em
 }
 
+\usepackage{array}
+\usepackage{placeins}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+
 % new page before each chapter
 \usepackage{sectsty}
 \sectionfont{\clearpage}
 
 ((* endblock docclass *))
+
+%-------- Title  ---------
 
 ((* block title *))
 
@@ -67,6 +72,16 @@
 \@date\\[8ex]
 \includegraphics{pics/jupyter_picture.jpg}
 \end{center}}
+
+% newline after paragraph
+\makeatletter
+\renewcommand\paragraph{%
+    \@startsection{paragraph}{4}{0mm}%
+       {-\baselineskip}%
+       {.5\baselineskip}%
+       {\normalfont\normalsize\bfseries}}
+\setcounter{secnumdepth}{4}
+\makeatother
 
 ((* endblock title *))
 
