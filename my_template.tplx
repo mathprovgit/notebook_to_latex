@@ -13,6 +13,19 @@
 %\documentclass[11pt]{article}
 \documentclass[reprint, floatfix, groupaddress, prb]{article}
 
+%depth of toc
+\setcounter{tocdepth}{4}
+
+% newline after paragraph
+\makeatletter
+\renewcommand\paragraph{%
+    \@startsection{paragraph}{4}{0mm}%
+       {-\baselineskip}%
+       {.5\baselineskip}%
+       {\normalfont\normalsize\bfseries}}
+\makeatother    
+
+%import packages
 \usepackage{placeins}
 \usepackage{graphicx}
 \usepackage{multirow}
