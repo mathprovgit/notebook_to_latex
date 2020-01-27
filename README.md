@@ -14,3 +14,11 @@ most tricks where borrowed from:
 1. open a conda terminal
 2. $ cd to path of my_notebook
 3. $ jupyter nbconvert --to latex --template my_template my_notebook.ipynb
+
+## test
+
+```
+git status
+git add
+git commit
+```
