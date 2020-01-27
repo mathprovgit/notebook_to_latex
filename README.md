@@ -5,9 +5,11 @@ convertion of the notebook to latex file(and/or pdf) using a nb extentions and t
 ## sources
 
 most tricks where borrowed from:
-    -http://blog.juliusschulz.de/blog/ultimate-ipython-notebook
-    -https://ipypublish.readthedocs.io/en/latest/getting_started.html
-    -[https://ipypublish.readthedocs.io/en/latest/getting_started.html](https://ipypublish.readthedocs.io/en/latest/getting_started.html) 
+
+    - http://blog.juliusschulz.de/blog/ultimate-ipython-notebook
+    - https://ipypublish.readthedocs.io/en/latest/getting_started.html
+    - [https://ipypublish.readthedocs.io/en/latest/getting_started.html](https://ipypublish.readthedocs.io/en/latest/getting_started.html) 
+    
 
 ## commands
 convert to Latex:
