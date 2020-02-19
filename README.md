@@ -15,4 +15,7 @@ most tricks where borrowed from:
 2. ```$ cd to path of my_notebook ```
 3. ```$ jupyter nbconvert --to latex --template my_template my_notebook.ipynb ```
 
+@mathprovgit
+
+
 
