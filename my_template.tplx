@@ -88,20 +88,21 @@
 ((* block maketitle *))
     
 \maketitle
-
+\thispagestyle{empty}
 \newpage
 
 \tableofcontents
-
+\thispagestyle{empty}
 \newpage
 
 \listoffigures
-
+\thispagestyle{empty}
 \newpage
 
 \listoftables
-
+\thispagestyle{empty}
 \newpage
+
 ((* endblock maketitle *))
 
 

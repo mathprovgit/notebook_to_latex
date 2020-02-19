@@ -12,8 +12,15 @@ most tricks where borrowed from:
 ## commands to perform the conversuion to Latex:
 
 1. open Terminal
-2. ```$ cd to path of my_notebook ```
+2. ```$ cd path/of/my_notebook ```
 3. ```$ jupyter nbconvert --to latex --template my_template my_notebook.ipynb ```
+
+## Create Requirements.txt:
+0. Convert the notebook from .ipynb to .py using the menu File, Download as ...
+1. open Terminal
+2.  ```$ pip install pipreqs ```
+3. ```$ pipreqs path/of/my_notebook ```
+
 
 @mathprovgit
 
