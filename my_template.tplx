@@ -94,6 +94,14 @@
 \tableofcontents
 
 \newpage
+
+\listoffigures
+
+\newpage
+
+\listoftables
+
+\newpage
 ((* endblock maketitle *))
 
 

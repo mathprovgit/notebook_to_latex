@@ -1,11 +1,11 @@
-%\documentclass[11pt]{article}
 \documentclass[reprint, floatfix, groupaddress, prb]{article}
 
-\usepackage{placeins}
-\usepackage{graphicx}
-\usepackage{multirow}
-\usepackage{array}
-\usepackage[table]{xcolor} 
+%set main font
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+%depth of toc
+\setcounter{tocdepth}{3}
 
 \AtBeginDocument{
 \heavyrulewidth=.08em
@@ -18,6 +18,12 @@
 \cmidrulekern=.5em
 \defaultaddspace=.5em
 }
+
+\usepackage{array}
+\usepackage{placeins}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
 
 % new page before each chapter
 \usepackage{sectsty}
@@ -188,6 +194,16 @@
 \@date\\[8ex]
 \includegraphics{pics/jupyter_picture.jpg}
 \end{center}}
+
+% newline after paragraph
+\makeatletter
+\renewcommand\paragraph{%
+    \@startsection{paragraph}{4}{0mm}%
+       {-\baselineskip}%
+       {.5\baselineskip}%
+       {\normalfont\normalsize\bfseries}}
+\setcounter{secnumdepth}{4}
+\makeatother
 
 
     
@@ -418,6 +434,14 @@
 
 \newpage
 
+\listoffigures
+
+\newpage
+
+\listoftables
+
+\newpage
+
     
     
 
@@ -443,10 +467,9 @@ meteonorm 7
 
 the data will be dealing with the weather data of the berlin tempelhof
 weatherstation on monthly basis.
- 
-            
-\prompt{Out}{outcolor}{4}{}
+
     
+        
     \begin{table}[ht] \rowcolors{2}{white}{gray!25}
 \begin{tabular}[l]{lll}
 \toprule
@@ -462,6 +485,7 @@ FF & m/s & wind speed\\
 \end{table}
 
     
+    
 
     \hypertarget{text-and-images}{%
 \section{Text and Images}\label{text-and-images}}
@@ -469,22 +493,30 @@ FF & m/s & wind speed\\
     \hypertarget{markdown-image-and-text}{%
 \subsection{markdown image and text}\label{markdown-image-and-text}}
 
-    \includegraphics{pics/pandas_logo.png}
+    
+        
+    \begin{figure}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_12_0.png}\end{center}
+        \caption{}
+        \label{}
+    \end{figure}
+    
+    
 
     here above image is a markdown image and the present text is a markdown
 text
 
     \hypertarget{code-images-and-text}{%
 \subsection{Code images and text}\label{code-images-and-text}}
- 
-            
-\prompt{Out}{outcolor}{5}{}
+
     
+        
     \begin{figure}
         \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_15_0.png}\end{center}
         \caption{}
         \label{}
     \end{figure}
+    
     
 
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -505,10 +537,9 @@ Monthly weather data from Berlin
     \begin{Verbatim}[commandchars=\\\{\}]
 units
     \end{Verbatim}
- 
-            
-\prompt{Out}{outcolor}{8}{}
+
     
+        
     \begin{table}[ht] \rowcolors{2}{white}{gray!25}
 \begin{tabular}[l]{lllllll}
 \toprule
@@ -520,14 +551,14 @@ index & month & G Gh & G Dh & Ta & Td & FF\\
 \end{table}
 
     
+    
 
     \begin{Verbatim}[commandchars=\\\{\}]
 data
     \end{Verbatim}
- 
-            
-\prompt{Out}{outcolor}{9}{}
+
     
+        
     \begin{table}[ht] \rowcolors{2}{white}{gray!25}
 \begin{tabular}[l]{llllll}
 \toprule
@@ -550,46 +581,47 @@ index & G Gh & G Dh & Ta & Td & FF\\
 \end{table}
 
     
+    
 
     \hypertarget{table-wide}{%
 \subsection{Table wide}\label{table-wide}}
 
     This is an example of wide table with random float rounded to 3 position
 after comma
- 
-            
-\prompt{Out}{outcolor}{10}{}
+
     
+        
     \begin{table}[ht] \rowcolors{2}{white}{gray!25}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}[l]{llllllllllllllll}
 \toprule
 index & col 1 & col 2 & col 3 & col 4 & col 5 & col 6 & col 7 & col 8 & col 9 & col 10 & col 11 & col 12 & col 13 & col 14 & col 15\\ 
 \midrule
-0.0 & 22.13 & 126.357 & 121.338 & 140.988 & 17.297 & 46.321 & 191.485 & 99.441 & 43.404 & 64.752 & 11.203 & 81.156 & 115.234 & 215.885 & 125.297\\ 
-1.0 & 80.851 & 10.645 & 161.81 & 39.433 & 177.936 & 89.558 & 143.776 & 245.223 & 245.777 & 151.958 & 171.13 & 107.12 & 3.301 & 52.233 & 222.192\\ 
-2.0 & 7.424 & 71.21 & 121.887 & 243.524 & 7.277 & 55.925 & 141.491 & 114.558 & 56.789 & 121.355 & 177.977 & 209.882 & 159.752 & 97.372 & 73.141\\ 
-3.0 & 146.749 & 183.522 & 185.01 & 186.273 & 227.613 & 139.861 & 230.989 & 93.239 & 5.898 & 216.711 & 241.928 & 188.969 & 193.022 & 201.26 & 96.269\\ 
-4.0 & 84.513 & 8.344 & 185.365 & 215.644 & 9.888 & 127.562 & 166.841 & 165.427 & 243.336 & 38.14 & 60.107 & 48.791 & 19.041 & 160.996 & 52.729\\ 
-5.0 & 43.905 & 68.156 & 95.403 & 178.96 & 14.047 & 165.766 & 135.64 & 94.159 & 17.44 & 33.784 & 171.333 & 241.972 & 1.778 & 223.06 & 235.898\\ 
-6.0 & 123.448 & 222.75 & 121.748 & 95.708 & 76.009 & 38.108 & 19.621 & 231.616 & 204.51 & 49.157 & 114.24 & 235.535 & 152.284 & 228.662 & 113.879\\ 
-7.0 & 20.913 & 167.147 & 113.361 & 96.834 & 211.438 & 151.559 & 224.837 & 51.902 & 80.18 & 7.778 & 155.125 & 21.49 & 180.385 & 51.592 & 17.85\\ 
-8.0 & 95.496 & 35.598 & 75.777 & 48.972 & 55.32 & 124.962 & 188.027 & 207.373 & 114.492 & 51.907 & 35.166 & 6.842 & 163.947 & 112.18 & 135.851\\ 
-9.0 & 42.955 & 16.915 & 29.292 & 173.299 & 246.011 & 222.639 & 151.852 & 205.424 & 129.598 & 179.34 & 161.978 & 2.287 & 2.162 & 151.836 & 27.732\\ 
-10.0 & 49.623 & 82.559 & 242.436 & 251.403 & 126.745 & 67.305 & 11.133 & 28.598 & 40.871 & 138.603 & 231.965 & 35.689 & 194.367 & 245.637 & 88.832\\ 
-11.0 & 151.448 & 195.16 & 60.13 & 20.496 & 75.458 & 251.055 & 199.282 & 229.737 & 68.651 & 237.257 & 80.108 & 6.697 & 71.454 & 178.385 & 13.406\\ 
-12.0 & 98.006 & 178.573 & 159.586 & 102.797 & 64.182 & 212.093 & 153.302 & 232.12 & 87.092 & 139.52 & 102.198 & 197.749 & 129.076 & 163.741 & 112.614\\ 
-13.0 & 211.283 & 65.082 & 137.298 & 78.784 & 208.412 & 121.67 & 203.515 & 163.663 & 209.221 & 233.217 & 168.432 & 119.992 & 152.879 & 198.18 & 84.95\\ 
-14.0 & 166.594 & 225.014 & 3.679 & 143.271 & 36.935 & 119.41 & 249.227 & 41.342 & 147.692 & 8.512 & 16.68 & 176.936 & 5.159 & 200.606 & 39.425\\ 
-15.0 & 202.557 & 223.021 & 54.446 & 193.02 & 196.486 & 90.723 & 195.349 & 155.368 & 95.348 & 42.493 & 224.538 & 95.168 & 197.42 & 193.481 & 39.565\\ 
-16.0 & 39.874 & 128.69 & 210.501 & 204.125 & 138.336 & 76.23 & 125.437 & 199.31 & 4.754 & 232.628 & 122.701 & 120.897 & 194.125 & 139.439 & 116.019\\ 
-17.0 & 208.849 & 175.01 & 209.839 & 227.181 & 129.479 & 40.732 & 29.426 & 187.157 & 161.647 & 120.97 & 183.295 & 191.458 & 99.476 & 152.167 & 160.421\\ 
-18.0 & 17.746 & 121.917 & 151.145 & 224.787 & 114.346 & 145.707 & 73.559 & 201.857 & 87.068 & 65.914 & 67.569 & 213.628 & 119.47 & 164.516 & 32.067\\ 
-19.0 & 5.163 & 182.177 & 207.219 & 228.323 & 113.865 & 124.977 & 50.845 & 203.647 & 50.885 & 34.326 & 234.824 & 199.617 & 125.495 & 80.671 & 10.963\\ 
+0.0 & 193.468 & 217.747 & 74.088 & 216.577 & 223.108 & 154.414 & 173.719 & 202.266 & 111.807 & 29.414 & 62.86 & 177.139 & 153.392 & 60.018 & 227.563\\ 
+1.0 & 153.298 & 159.262 & 33.865 & 249.128 & 126.76 & 120.847 & 203.907 & 193.997 & 227.914 & 227.2 & 135.358 & 29.597 & 155.952 & 34.09 & 132.166\\ 
+2.0 & 53.769 & 242.73 & 83.46 & 197.067 & 115.015 & 184.914 & 184.83 & 2.474 & 14.771 & 110.793 & 167.814 & 146.565 & 8.199 & 63.969 & 171.777\\ 
+3.0 & 234.505 & 178.021 & 66.233 & 116.85 & 55.357 & 55.444 & 131.67 & 94.915 & 176.811 & 79.357 & 241.689 & 153.596 & 178.773 & 133.784 & 99.016\\ 
+4.0 & 79.537 & 186.396 & 143.15 & 10.168 & 121.453 & 98.313 & 90.624 & 33.97 & 92.087 & 157.032 & 205.538 & 65.146 & 237.744 & 98.346 & 66.781\\ 
+5.0 & 101.462 & 160.45 & 34.021 & 95.413 & 231.483 & 240.933 & 32.725 & 61.201 & 130.401 & 135.786 & 46.631 & 202.238 & 105.153 & 55.804 & 240.981\\ 
+6.0 & 69.489 & 92.852 & 147.785 & 124.974 & 13.94 & 181.156 & 102.173 & 67.36 & 175.679 & 51.077 & 135.84 & 34.657 & 19.303 & 92.653 & 116.911\\ 
+7.0 & 149.337 & 22.286 & 76.755 & 130.718 & 79.24 & 225.759 & 143.208 & 199.84 & 248.894 & 109.025 & 232.583 & 168.047 & 64.048 & 251.549 & 186.632\\ 
+8.0 & 97.572 & 189.406 & 128.158 & 88.069 & 211.657 & 142.413 & 198.715 & 7.407 & 132.209 & 236.648 & 22.204 & 164.57 & 186.894 & 9.507 & 245.202\\ 
+9.0 & 55.245 & 12.943 & 147.295 & 128.275 & 191.164 & 75.151 & 40.836 & 4.836 & 119.614 & 32.968 & 247.663 & 234.789 & 179.396 & 5.869 & 204.703\\ 
+10.0 & 63.098 & 249.849 & 118.128 & 130.882 & 211.026 & 248.031 & 146.11 & 50.196 & 73.65 & 237.862 & 201.408 & 125.862 & 95.575 & 36.835 & 56.259\\ 
+11.0 & 146.691 & 83.741 & 14.205 & 30.411 & 49.943 & 70.856 & 197.979 & 176.394 & 138.764 & 195.93 & 127.384 & 39.268 & 72.596 & 226.21 & 74.309\\ 
+12.0 & 164.649 & 128.292 & 249.654 & 9.711 & 5.539 & 177.306 & 78.033 & 225.886 & 95.844 & 151.259 & 227.275 & 60.048 & 134.5 & 86.698 & 139.855\\ 
+13.0 & 140.557 & 136.554 & 239.475 & 143.523 & 11.472 & 214.933 & 191.01 & 119.808 & 221.605 & 207.275 & 164.863 & 90.29 & 163.025 & 205.352 & 107.36\\ 
+14.0 & 90.686 & 126.058 & 89.596 & 2.622 & 5.41 & 103.273 & 175.919 & 221.609 & 32.41 & 135.247 & 92.534 & 189.594 & 94.016 & 251.382 & 189.963\\ 
+15.0 & 71.751 & 228.602 & 17.317 & 81.921 & 44.116 & 20.637 & 118.625 & 248.983 & 187.092 & 144.087 & 88.019 & 123.241 & 117.35 & 225.751 & 188.825\\ 
+16.0 & 130.668 & 98.465 & 132.048 & 83.604 & 93.253 & 175.352 & 228.378 & 195.237 & 214.696 & 101.121 & 215.758 & 2.126 & 79.65 & 118.217 & 55.12\\ 
+17.0 & 18.262 & 130.785 & 103.477 & 209.121 & 220.066 & 244.711 & 91.019 & 67.011 & 187.222 & 240.023 & 242.547 & 50.16 & 145.151 & 53.479 & 69.963\\ 
+18.0 & 227.288 & 119.244 & 186.453 & 214.862 & 99.751 & 130.582 & 119.512 & 77.435 & 218.425 & 137.012 & 181.867 & 1.054 & 124.389 & 81.17 & 121.551\\ 
+19.0 & 229.901 & 9.2 & 214.849 & 13.161 & 57.355 & 74.507 & 123.327 & 64.978 & 58.823 & 122.74 & 163.181 & 229.753 & 66.37 & 139.493 & 23.32\\ 
 \bottomrule 
  \end{tabular}
 }\end{table}
 
+    
     
 
     \hypertarget{example-of-chart}{%
@@ -598,30 +630,57 @@ index & col 1 & col 2 & col 3 & col 4 & col 5 & col 6 & col 7 & col 8 & col 9 & 
     \hypertarget{chart-bar}{%
 \subsection{chart bar}\label{chart-bar}}
 
+        
     \begin{figure}
         \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_27_0.pdf}\end{center}
         \caption{}
         \label{}
     \end{figure}
     
+    
     \hypertarget{chart-scatter}{%
 \subsection{chart scatter}\label{chart-scatter}}
 
+        
     \begin{figure}
         \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_29_0.pdf}\end{center}
         \caption{}
         \label{}
     \end{figure}
     
+    
     \hypertarget{chart-line}{%
 \subsection{chart line}\label{chart-line}}
 
+        
     \begin{figure}
         \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_31_0.pdf}\end{center}
         \caption{}
         \label{}
     \end{figure}
     
+    
+    \hypertarget{example-of-matematic-formulas}{%
+\section{Example of matematic
+formulas}\label{example-of-matematic-formulas}}
+
+    example 1: \[
+y = a x + b\\
+\text{with:}\\
+y \text{: Ordonate}\\
+x \text{: Abscissa}\\
+a \text{: Slope}\\
+b \text{: Initial value}
+\]
+
+    example 2:
+
+\[\sum_{i=1}^{\infty} i = \frac{n(n+1)}{2}\]
+
+    example 3:
+
+\[ \int\limits_0^\infty {\sqrt{x} e^{ - x} dx} = \frac{1}{2}\sqrt{\pi}\]
+
     \hypertarget{generation-of-the-template}{%
 \section{Generation of the template}\label{generation-of-the-template}}
 
