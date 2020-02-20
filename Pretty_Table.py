@@ -4,9 +4,11 @@ class PrettyTable(list):
     """ Overridden list class which takes a 2-dimensional list of 
         the form [[1,2,3],[4,5,6]], and renders HTML and LaTeX Table in 
         IPython Notebook. For LaTeX export two styles can be chosen."""
-    def __init__(self, initlist=[], extra_header=None, print_latex_longtable=True,wide_table=False):
+    def __init__(self, initlist=[], extra_header=None, print_latex_longtable=True,wide_table=False,label="",caption=""):
         self.print_latex_longtable = print_latex_longtable
         self.wide_table= wide_table
+        self.label=label
+        self.caption=caption
         if extra_header is not None:
             if len(initlist[0]) != len(extra_header):
                 raise ValueError("Header list must have same length as data has columns.")
@@ -25,6 +27,7 @@ class PrettyTable(list):
     def latex_longtable(self):
         latex=["\\begin{table}[ht] "]
         latex.append("\\rowcolors{2}{white}{gray!25}\n")
+        latex.append("\\centering\n")
         if self.wide_table:
             latex.append("\\resizebox{\\textwidth}{!}{%\n")
         latex.append("\\begin{tabular}[l]{")
@@ -40,8 +43,10 @@ class PrettyTable(list):
                 first = False
         latex.append("\\bottomrule \n \\end{tabular}\n")
         if self.wide_table:
-            latex.append("}")
-        latex.append("\end{table}")
+            latex.append("}\n")
+        latex.append("\caption{"+self.caption+"}\n")
+        latex.append("\label{table:"+self.label+"}\n") 
+        latex.append("\end{table}\n")
         return ''.join(latex)
         
     def _repr_html_(self):

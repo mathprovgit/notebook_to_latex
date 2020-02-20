@@ -51,8 +51,8 @@
     % proper Figure object with a Caption API and a way to capture that
     % in the conversion process - todo).
     \usepackage{caption}
-    \DeclareCaptionFormat{nocaption}{}
-    \captionsetup{format=nocaption,aboveskip=0pt,belowskip=0pt}
+    %\DeclareCaptionFormat{nocaption}{}
+    %\captionsetup{format=nocaption,aboveskip=0pt,belowskip=0pt}
 
     \usepackage[Export]{adjustbox} % Used to constrain images to a maximum size
     \adjustboxset{max size={0.9\linewidth}{0.9\paperheight}}
@@ -453,14 +453,12 @@
     \hypertarget{import-packages}{%
 \subsection{import packages}\label{import-packages}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-The required packages for this Notebook are:
-
-    \end{Verbatim}
+    The required packages for this Notebook are:
 
     
         
     \begin{table}[ht] \rowcolors{2}{white}{gray!25}
+\centering
 \begin{tabular}[l]{ll}
 \toprule
 Package & Version\\ 
@@ -473,7 +471,10 @@ matplotlib & 3.1.1\\
 ipython & 7.12.0\\ 
 \bottomrule 
  \end{tabular}
+\caption{the required packages}
+\label{table:req}
 \end{table}
+
 
     
     
@@ -485,14 +486,22 @@ ipython & 7.12.0\\
 \subsubsection{function tp display beatiful
 tables}\label{function-tp-display-beatiful-tables}}
 
+    \textbf{Example 1:} pretty Dataframe Tables
+
     \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ export_ready_format(df,n}\OperatorTok{=}\DecValTok{0}\NormalTok{,wide}\OperatorTok{=}\VariableTok{False}\NormalTok{):}
+\KeywordTok{def}\NormalTok{ pretty_df(df,n}\OperatorTok{=}\DecValTok{0}\NormalTok{,wide}\OperatorTok{=}\VariableTok{False}\NormalTok{,label}\OperatorTok{=}\StringTok{""}\NormalTok{,caption}\OperatorTok{=}\StringTok{""}\NormalTok{):}
+    \CommentTok{"""}
+\CommentTok{    For more Information Check PrettyTable.py}
+\CommentTok{    """}
 \NormalTok{    df2}\OperatorTok{=}\NormalTok{df.}\BuiltInTok{round}\NormalTok{(n).reset_index()}
 \NormalTok{    col}\OperatorTok{=}\NormalTok{[w.replace(}\StringTok{"_"}\NormalTok{, }\StringTok{" "}\NormalTok{) }\ControlFlowTok{for}\NormalTok{ w }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(df2.columns)]}
-    \ControlFlowTok{return}\NormalTok{ pt.PrettyTable(df2.values,col,wide_table}\OperatorTok{=}\NormalTok{wide)}
+    \ControlFlowTok{return}\NormalTok{ pt.PrettyTable(df2.values,col,wide_table}\OperatorTok{=}\NormalTok{wide,label}\OperatorTok{=}\NormalTok{label,caption}\OperatorTok{=}\NormalTok{label)}
 \end{Highlighting}
 \end{Shaded}
+
+    \hypertarget{another-function}{%
+\subsubsection{another function}\label{another-function}}
 
     \hypertarget{import-data}{%
 \section{import data}\label{import-data}}
@@ -506,6 +515,7 @@ weatherstation on monthly basis.
     
         
     \begin{table}[ht] \rowcolors{2}{white}{gray!25}
+\centering
 \begin{tabular}[l]{lll}
 \toprule
 Symbol & Unit & Description\\ 
@@ -517,7 +527,10 @@ Td & °C & Dew point\\
 FF & m/s & wind speed\\ 
 \bottomrule 
  \end{tabular}
+\caption{Variable and units of weather data}
+\label{table:wdunits}
 \end{table}
+
 
     
     
@@ -531,15 +544,12 @@ FF & m/s & wind speed\\
     
         
     \begin{figure}
-        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_14_0.png}\end{center}
-        \caption{}
-        \label{}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_18_0.png}\end{center}
+        \caption{Pandas Logo}
+        \label{fig:pandlogo}
     \end{figure}
     
     
-
-    here above image is a markdown image and the present text is a markdown
-text
 
     \hypertarget{code-images-and-text}{%
 \subsection{Code images and text}\label{code-images-and-text}}
@@ -547,17 +557,15 @@ text
     
         
     \begin{figure}
-        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_17_0.png}\end{center}
-        \caption{}
-        \label{}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_20_0.png}\end{center}
+        \caption{horizintal concatenation of 2 Python Logo}
+        \label{fig:hconcat}
     \end{figure}
     
     
 
-    \begin{Verbatim}[commandchars=\\\{\}]
- The here above images are generated from the concatenation of 2 images using
-nb\_setup.images\_hconcat and this text was written using the print statement
-    \end{Verbatim}
+    The here above images are generated from the concatenation of 2 images,
+using \texttt{nb\_setup.images\_hconcat}
 
     \hypertarget{example-of-a-table}{%
 \section{Example of a table}\label{example-of-a-table}}
@@ -565,17 +573,12 @@ nb\_setup.images\_hconcat and this text was written using the print statement
     \hypertarget{table-small}{%
 \subsection{table small}\label{table-small}}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-Monthly weather data from Berlin
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-units
-    \end{Verbatim}
+    Example of Small tables showing monthly weather data for berlin
 
     
         
     \begin{table}[ht] \rowcolors{2}{white}{gray!25}
+\centering
 \begin{tabular}[l]{lllllll}
 \toprule
 index & month & G Gh & G Dh & Ta & Td & FF\\ 
@@ -583,18 +586,18 @@ index & month & G Gh & G Dh & Ta & Td & FF\\
 0 & nan & kWh/m² & kWh/m² & °C & °C & m/s\\ 
 \bottomrule 
  \end{tabular}
+\caption{Variable and units of weather data}
+\label{table:wdpunits}
 \end{table}
 
-    
-    
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-data
-    \end{Verbatim}
+    
+    
 
     
         
     \begin{table}[ht] \rowcolors{2}{white}{gray!25}
+\centering
 \begin{tabular}[l]{llllll}
 \toprule
 index & G Gh & G Dh & Ta & Td & FF\\ 
@@ -613,7 +616,10 @@ index & G Gh & G Dh & Ta & Td & FF\\
 12.0 & 15.0 & 10.0 & 1.0 & -1.0 & 6.0\\ 
 \bottomrule 
  \end{tabular}
+\caption{Monthly weather data for berlin}
+\label{table:wdpdatas}
 \end{table}
+
 
     
     
@@ -627,34 +633,39 @@ after comma
     
         
     \begin{table}[ht] \rowcolors{2}{white}{gray!25}
+\centering
 \resizebox{\textwidth}{!}{%
 \begin{tabular}[l]{llllllllllllllll}
 \toprule
 index & col 1 & col 2 & col 3 & col 4 & col 5 & col 6 & col 7 & col 8 & col 9 & col 10 & col 11 & col 12 & col 13 & col 14 & col 15\\ 
 \midrule
-0.0 & 141.587 & 147.807 & 18.634 & 140.561 & 139.669 & 188.75 & 136.362 & 222.179 & 216.358 & 193.761 & 73.195 & 154.315 & 188.166 & 221.508 & 100.682\\ 
-1.0 & 237.598 & 94.612 & 197.325 & 250.313 & 110.662 & 127.267 & 115.431 & 204.143 & 110.629 & 12.782 & 73.888 & 241.525 & 43.99 & 249.438 & 209.184\\ 
-2.0 & 19.48 & 31.134 & 192.194 & 32.261 & 49.988 & 142.631 & 167.684 & 88.867 & 184.068 & 103.502 & 135.944 & 12.515 & 174.025 & 46.818 & 149.154\\ 
-3.0 & 4.917 & 192.06 & 86.59 & 245.928 & 70.908 & 247.434 & 49.163 & 200.105 & 224.294 & 42.617 & 83.086 & 251.94 & 96.094 & 108.293 & 116.583\\ 
-4.0 & 109.234 & 48.983 & 216.928 & 228.443 & 2.22 & 114.391 & 146.433 & 101.617 & 211.012 & 106.881 & 136.375 & 40.507 & 220.868 & 32.054 & 133.658\\ 
-5.0 & 168.597 & 223.705 & 211.099 & 8.819 & 16.635 & 251.751 & 22.539 & 110.044 & 155.799 & 92.625 & 128.944 & 91.167 & 136.526 & 103.162 & 230.872\\ 
-6.0 & 86.02 & 128.109 & 74.832 & 98.393 & 5.268 & 234.295 & 225.926 & 22.687 & 179.032 & 126.705 & 209.122 & 162.626 & 3.918 & 140.754 & 96.551\\ 
-7.0 & 76.875 & 10.567 & 242.428 & 6.312 & 211.138 & 129.815 & 246.136 & 118.315 & 240.23 & 24.465 & 219.083 & 243.874 & 106.071 & 209.646 & 44.233\\ 
-8.0 & 6.399 & 187.04 & 238.39 & 140.404 & 246.932 & 112.356 & 11.3 & 97.853 & 97.683 & 164.443 & 62.669 & 205.508 & 199.404 & 137.437 & 187.287\\ 
-9.0 & 226.41 & 240.212 & 181.827 & 37.954 & 0.028 & 177.432 & 70.542 & 103.877 & 87.566 & 199.135 & 8.733 & 2.999 & 231.368 & 153.88 & 190.268\\ 
-10.0 & 178.416 & 10.163 & 7.46 & 180.122 & 107.695 & 241.944 & 172.694 & 64.278 & 207.84 & 207.04 & 79.606 & 154.793 & 171.771 & 16.747 & 8.08\\ 
-11.0 & 218.742 & 215.11 & 178.857 & 44.683 & 106.971 & 104.854 & 47.587 & 158.285 & 108.266 & 163.067 & 73.665 & 54.143 & 103.85 & 124.692 & 64.509\\ 
-12.0 & 131.838 & 28.858 & 207.593 & 139.734 & 68.551 & 248.96 & 164.704 & 213.185 & 182.984 & 52.834 & 5.384 & 47.009 & 115.225 & 241.151 & 119.737\\ 
-13.0 & 61.701 & 137.105 & 16.302 & 101.25 & 194.126 & 44.415 & 141.786 & 20.18 & 223.788 & 104.582 & 178.426 & 76.085 & 71.385 & 107.472 & 179.249\\ 
-14.0 & 131.27 & 128.797 & 84.994 & 205.675 & 88.935 & 28.93 & 71.572 & 141.599 & 237.876 & 123.67 & 30.565 & 33.584 & 10.798 & 204.964 & 220.463\\ 
-15.0 & 194.598 & 85.244 & 230.848 & 195.42 & 213.764 & 69.009 & 161.704 & 199.713 & 239.808 & 253.277 & 110.25 & 251.625 & 198.215 & 125.291 & 72.588\\ 
-16.0 & 73.352 & 194.397 & 193.063 & 199.441 & 218.117 & 44.826 & 105.339 & 162.596 & 57.457 & 121.101 & 227.093 & 210.739 & 84.817 & 1.894 & 82.938\\ 
-17.0 & 65.462 & 81.576 & 191.245 & 71.347 & 56.088 & 226.868 & 101.614 & 73.157 & 213.851 & 116.955 & 39.634 & 164.889 & 76.568 & 36.163 & 103.585\\ 
-18.0 & 108.193 & 192.956 & 103.207 & 64.606 & 217.151 & 167.874 & 163.562 & 1.94 & 13.971 & 38.944 & 226.644 & 89.909 & 13.991 & 95.732 & 101.605\\ 
-19.0 & 79.883 & 250.384 & 227.905 & 183.548 & 87.725 & 239.59 & 93.472 & 232.966 & 253.973 & 148.126 & 64.793 & 246.475 & 36.213 & 83.827 & 185.482\\ 
+0.0 & 87.072 & 248.203 & 99.908 & 208.615 & 141.326 & 154.671 & 227.536 & 212.102 & 22.32 & 16.284 & 138.059 & 146.53 & 116.753 & 240.239 & 2.742\\ 
+1.0 & 190.363 & 156.683 & 172.959 & 95.866 & 237.877 & 3.781 & 61.966 & 36.781 & 203.807 & 147.06 & 183.727 & 218.934 & 147.14 & 54.141 & 112.559\\ 
+2.0 & 138.606 & 104.005 & 56.683 & 95.267 & 45.171 & 195.579 & 178.167 & 240.534 & 202.904 & 117.572 & 133.89 & 226.947 & 186.089 & 160.561 & 114.957\\ 
+3.0 & 65.185 & 15.893 & 128.69 & 27.535 & 99.17 & 81.21 & 131.319 & 199.468 & 187.053 & 64.538 & 164.081 & 145.443 & 123.835 & 99.904 & 65.927\\ 
+4.0 & 242.503 & 126.268 & 163.671 & 120.312 & 106.322 & 175.056 & 7.136 & 123.092 & 210.092 & 195.073 & 71.327 & 39.06 & 10.758 & 14.713 & 38.449\\ 
+5.0 & 70.944 & 63.541 & 171.729 & 234.062 & 103.621 & 204.337 & 126.613 & 94.899 & 135.673 & 225.754 & 167.303 & 193.296 & 237.862 & 34.685 & 48.716\\ 
+6.0 & 17.241 & 24.77 & 139.7 & 207.719 & 151.335 & 28.719 & 176.532 & 216.899 & 140.65 & 68.722 & 133.041 & 45.072 & 178.73 & 123.51 & 207.088\\ 
+7.0 & 156.837 & 23.794 & 160.082 & 16.085 & 100.067 & 94.824 & 47.392 & 132.01 & 225.246 & 36.629 & 19.409 & 48.69 & 227.611 & 133.451 & 247.034\\ 
+8.0 & 4.896 & 175.341 & 7.601 & 80.974 & 247.456 & 17.272 & 26.539 & 225.575 & 196.02 & 39.064 & 168.999 & 69.112 & 52.282 & 106.748 & 17.21\\ 
+9.0 & 151.131 & 62.366 & 184.718 & 221.959 & 168.595 & 33.983 & 144.223 & 228.176 & 139.35 & 228.082 & 99.027 & 163.084 & 63.151 & 238.116 & 144.775\\ 
+10.0 & 136.272 & 235.136 & 204.91 & 191.44 & 197.369 & 55.954 & 118.136 & 116.264 & 59.923 & 145.1 & 191.205 & 35.457 & 55.236 & 134.388 & 235.144\\ 
+11.0 & 139.727 & 68.147 & 201.795 & 44.553 & 14.072 & 70.154 & 238.94 & 202.483 & 156.414 & 185.268 & 14.832 & 249.212 & 137.29 & 35.846 & 251.988\\ 
+12.0 & 218.299 & 75.001 & 146.094 & 238.302 & 191.031 & 9.206 & 70.258 & 180.248 & 155.927 & 152.149 & 176.428 & 230.966 & 18.393 & 124.391 & 43.359\\ 
+13.0 & 162.364 & 48.716 & 78.711 & 143.793 & 132.633 & 50.04 & 37.898 & 28.999 & 177.193 & 30.14 & 32.414 & 212.193 & 43.948 & 66.405 & 10.852\\ 
+14.0 & 124.492 & 153.876 & 234.345 & 3.802 & 63.364 & 147.412 & 166.393 & 241.753 & 187.228 & 16.383 & 76.058 & 101.659 & 88.532 & 34.775 & 187.772\\ 
+15.0 & 182.77 & 85.679 & 71.859 & 191.919 & 85.998 & 111.777 & 188.225 & 50.13 & 17.973 & 199.384 & 122.369 & 147.003 & 22.208 & 181.664 & 141.03\\ 
+16.0 & 231.624 & 65.529 & 243.541 & 130.99 & 2.062 & 35.205 & 54.156 & 154.209 & 193.842 & 224.172 & 101.902 & 236.301 & 155.382 & 245.459 & 94.601\\ 
+17.0 & 173.324 & 211.656 & 105.162 & 161.443 & 145.41 & 21.901 & 207.42 & 37.53 & 149.516 & 10.04 & 6.141 & 61.444 & 50.059 & 253.862 & 153.103\\ 
+18.0 & 36.799 & 30.029 & 241.983 & 125.41 & 228.293 & 48.819 & 24.161 & 224.524 & 116.004 & 106.443 & 251.5 & 140.521 & 229.524 & 136.281 & 125.602\\ 
+19.0 & 191.547 & 206.68 & 63.301 & 56.337 & 182.498 & 130.324 & 107.933 & 2.52 & 223.872 & 31.974 & 21.516 & 95.907 & 224.317 & 170.532 & 146.667\\ 
 \bottomrule 
  \end{tabular}
-}\end{table}
+}
+\caption{wide table of random numbers}
+\label{table:rndm}
+\end{table}
+
 
     
     
@@ -667,9 +678,9 @@ index & col 1 & col 2 & col 3 & col 4 & col 5 & col 6 & col 7 & col 8 & col 9 & 
 
         
     \begin{figure}
-        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_29_0.pdf}\end{center}
-        \caption{}
-        \label{}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_32_0.pdf}\end{center}
+        \caption{Solar Irradiance in Berlin}
+        \label{fig:sol}
     \end{figure}
     
     
@@ -678,9 +689,9 @@ index & col 1 & col 2 & col 3 & col 4 & col 5 & col 6 & col 7 & col 8 & col 9 & 
 
         
     \begin{figure}
-        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_31_0.pdf}\end{center}
-        \caption{}
-        \label{}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_34_0.pdf}\end{center}
+        \caption{Wind speed in Berlin}
+        \label{fig:windspee}
     \end{figure}
     
     
@@ -689,9 +700,9 @@ index & col 1 & col 2 & col 3 & col 4 & col 5 & col 6 & col 7 & col 8 & col 9 & 
 
         
     \begin{figure}
-        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_33_0.pdf}\end{center}
-        \caption{}
-        \label{}
+        \begin{center}\adjustimage{max size={0.9\linewidth}{0.4\paperheight}}{my_notebook_files/my_notebook_36_0.pdf}\end{center}
+        \caption{Ambiant and Due temperature in Berlin}
+        \label{fig:ambdue}
     \end{figure}
     
     
@@ -699,31 +710,70 @@ index & col 1 & col 2 & col 3 & col 4 & col 5 & col 6 & col 7 & col 8 & col 9 & 
 \section{Example of matematic
 formulas}\label{example-of-matematic-formulas}}
 
-    example 1:
+    \textbf{example 1}: Linear function
 
-\[ y = a x + b \]
+\begin{equation}
+\label{eq:lineq}
+y=ax+b
+\end{equation}
 
 with:
 
 \begin{itemize}
-\tightlist
-\item
-  y : Ordonate
-\item
-  x : Abscissa
-\item
-  a : Slope
-\item
-  b : Initial value
+\item $ x $: Abscissa
+\item $ y $: Ordonate
+\item $ a $: Slope
+\item $ b $: Initial Value
 \end{itemize}
 
-    example 2:
+    \textbf{example 2}: Sum Gaussian Integer
 
-\[\sum_{i=1}^{\infty} i = \frac{n(n+1)}{2}\]
+\begin{equation}\label{eq:gaussint}
+\sum_{i=1}^{\infty} i = \frac{n(n+1)}{2}
+\end{equation}
 
-    example 3:
+    \textbf{example 3}: Gamma three half
 
-\[ \int\limits_0^\infty {\sqrt{x} e^{ - x} dx} = \frac{1}{2}\sqrt{\pi}\]
+\begin{equation}\label{eq:gamma}
+\Gamma \left( \frac{3}{2} \right) = \int\limits_0^\infty {x^{\frac{3}{2} - 1} e^{ - x} dx} = \int\limits_0^\infty {\sqrt{x} e^{ - x} dx} = \frac{1}{2}\sqrt{\pi}
+\end{equation}
+
+    \hypertarget{referencing}{%
+\section{Referencing}\label{referencing}}
+
+    \hypertarget{images}{%
+\subsection{Images}\label{images}}
+
+    Referencing Images:
+
+\begin{itemize}
+\item The image : \ref{fig:windspee} Is a plot of type scatter using matplotlib
+\item The image : \ref{fig:ambdue} Caption and label will be edited in Cell Metadata with:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{"caption"}\NormalTok{: }\StringTok{"caption text"}\NormalTok{,  }
+\CommentTok{"label"}\NormalTok{: }\StringTok{"fig:reftext"} 
+\end{Highlighting}
+\end{Shaded}
+
+    \hypertarget{tables}{%
+\subsection{Tables}\label{tables}}
+
+    The table \ref{table:req} represent the content of the file
+requirements.txt generated with \texttt{pipreqs}
+
+    \hypertarget{equations}{%
+\subsection{Equations}\label{equations}}
+
+    Referencing equations:
+
+\begin{itemize}
+\item The equation \ref{eq:lineq} represents Linear equation or first order Polynome
+\item The equation \ref{eq:gaussint} represents the sum of Gaussian Integers 
+\item The equation \ref{eq:gamma} represents a specific gamma function, namely: $\Gamma \left( \frac{3}{2}\right)$
+\end{itemize}
 
     \hypertarget{generation-of-the-template}{%
 \section{Generation of the template}\label{generation-of-the-template}}
