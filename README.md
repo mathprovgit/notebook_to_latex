@@ -14,7 +14,7 @@ most tricks where borrowed from:
 1. open Terminal
 2. ```python 
 $ cd path/of/my_notebook
-```
+   ```
 3. ```$ jupyter nbconvert --to latex --template my_template my_notebook.ipynb ```
 
 ## Create Requirements.txt:
