@@ -485,12 +485,14 @@ ipython & 7.12.0\\
 \subsubsection{function tp display beatiful
 tables}\label{function-tp-display-beatiful-tables}}
 
-    \begin{verbatim}
-def export_ready_format(df,n=0,wide=False):
-    df2=df.round(n).reset_index()
-    col=[w.replace("_", " ") for w in list(df2.columns)]
-    return pt.PrettyTable(df2.values,col,wide_table=wide)
-\end{verbatim}
+    \begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ export_ready_format(df,n}\OperatorTok{=}\DecValTok{0}\NormalTok{,wide}\OperatorTok{=}\VariableTok{False}\NormalTok{):}
+\NormalTok{    df2}\OperatorTok{=}\NormalTok{df.}\BuiltInTok{round}\NormalTok{(n).reset_index()}
+\NormalTok{    col}\OperatorTok{=}\NormalTok{[w.replace(}\StringTok{"_"}\NormalTok{, }\StringTok{" "}\NormalTok{) }\ControlFlowTok{for}\NormalTok{ w }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(df2.columns)]}
+    \ControlFlowTok{return}\NormalTok{ pt.PrettyTable(df2.values,col,wide_table}\OperatorTok{=}\NormalTok{wide)}
+\end{Highlighting}
+\end{Shaded}
 
     \hypertarget{import-data}{%
 \section{import data}\label{import-data}}
