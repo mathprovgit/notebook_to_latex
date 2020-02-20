@@ -12,7 +12,9 @@ most tricks where borrowed from:
 ## commands to perform the conversuion to Latex:
 
 1. open Terminal
-2. ```python $ cd path/of/my_notebook ```
+2. ```python 
+$ cd path/of/my_notebook
+```
 3. ```$ jupyter nbconvert --to latex --template my_template my_notebook.ipynb ```
 
 ## Create Requirements.txt:
