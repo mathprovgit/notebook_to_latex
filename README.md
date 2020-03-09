@@ -1,13 +1,14 @@
 # Notebook automated report
 convertion of a Jupyter notebook into latex file (and/or pdf) using a nb extentions and template
 
+
 Here the notebook:
-**my_notebook.ipynb** 
+- **my_notebook.ipynb** 
 will be converted in with nbconvert:
-**my_notebook.tex**
-after compilation with Latex
-**my_notebook.pdf**
-to latex file (and/or pdf) using a nb extentions and template
+- **my_notebook.tex**
+after compilation with Latex:
+- **my_notebook.pdf**
+
 
 ## sources
 
