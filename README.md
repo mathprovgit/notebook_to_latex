@@ -2,10 +2,10 @@
 convertion of a Jupyter notebook into latex file (and/or pdf) using a nb extentions and template
 
 
-Here the notebook:
+Here in the notebook:
 - **my_notebook.ipynb** 
 
-will be converted in with nbconvert:
+The output as well as Markdown cells will be converted in with nbconvert:
 - **my_notebook.tex**
 
 after compilation with Latex:
