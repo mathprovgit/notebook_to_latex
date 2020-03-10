@@ -14,14 +14,13 @@ after compilation with Latex:
 
 ## sources
 
-Ressources i used to creat this notebook:
+Litterature ressources used to create this notebook:
 - http://blog.juliusschulz.de/blog/ultimate-ipython-notebook
 - https://ipypublish.readthedocs.io/en/latest/getting_started.html
 - https://www.overleaf.com/learn/latex/Cross_referencing_sections_and_equations#Referencing_equations.2C_figures_and_tables
 - https://alvinalexander.com/blog/post/latex/reference-figure-or-table-within-latex-document
 
-
-## commands to perform the conversuion to Latex:
+## Notebook conversion to Latex:
 in a python terminal type:
 ```python
 cd path/of/my_notebook
@@ -35,3 +34,6 @@ Type the folowing commands in a terminal:
 pip install pipreqs
 pipreqs path/of/my_notebook
 ```
+
+output file:
+ - **requirements.txt**
