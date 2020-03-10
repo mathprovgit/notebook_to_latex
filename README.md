@@ -3,13 +3,13 @@ convertion of a Jupyter notebook into latex file (and/or pdf) using a nb extenti
 
 
 Here the notebook:
-- **my_notebook.ipynb** \
+- **my_notebook.ipynb** 
 
 will be converted in with nbconvert:
-- **my_notebook.tex**\
+- **my_notebook.tex**
 
 after compilation with Latex:
-- **my_notebook.pdf**\
+- **my_notebook.pdf**
 
 
 ## sources
@@ -24,8 +24,8 @@ Ressources i used to creat this notebook:
 ## commands to perform the conversuion to Latex:
 in a python terminal type:
 ```python
-$ cd path/of/my_notebook
-$ jupyter nbconvert --to latex --template my_template my_notebook.ipynb 
+cd path/of/my_notebook
+jupyter nbconvert --to latex --template my_template my_notebook.ipynb 
 ```
 
 ## Create Requirements.txt:
@@ -34,4 +34,4 @@ Type the folowing commands in a terminal:
 ```Python
 pip install pipreqs
 pipreqs path/of/my_notebook
-´´´
+```
