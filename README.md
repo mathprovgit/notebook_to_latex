@@ -3,7 +3,7 @@ convertion of a Jupyter notebook into latex file (and/or pdf) using a nb extenti
 
 
 Here the notebook:
-- **my_notebook.ipynb** 
+- **my_notebook.ipynb** \
 will be converted in with nbconvert:
 - **my_notebook.tex**
 after compilation with Latex:
